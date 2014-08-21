@@ -60,6 +60,11 @@
         log("weeks:" + ts.weeks());
         log("months:" + ts.months());
         log("years:" + ts.years());
+        ts.add(1,"y");
+        log("years:" + ts.years());
+        ts.subtract(1,"d");
+        log("days:" + ts.days());
+        log("weeks:" + ts.weeks());
 
         log("---------------as------------------------");
         log("asmilliseconds:" + ts.asMilliseconds());
