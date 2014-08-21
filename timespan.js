@@ -74,7 +74,9 @@
 
 
     var config = {
-        digits: 2       //小数点位数
+        digits: 2,       //小数点位数
+        baseUnit:"s",    //最小显示单位，在现有单位中配置，从 y 到 ms
+        length:0        //友好字符串显示组数，如果为0，则显示全部（如果某个单位上为0，则不计入显示）
     };
     var Timespan = function (value, unit) {
 
