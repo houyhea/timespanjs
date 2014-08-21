@@ -25,6 +25,8 @@
 <button id="btn">查看</button>
 请在console控制台查看结果。
 
+<div><span>语言：</span><input type="text" id="lan" value="zh-cn"/></div><button id="langbtn">设置语言</button>
+
 <script>
     function log(str) {
         console.log(str + "\n");
@@ -40,11 +42,15 @@
         var second = +$("#second").val();
         var ms = +$("#ms").val();
 
+
+
+
         var msvalue = ms + second * 1000 + min * 1000 * 60 + hour * 1000 * 60 * 60 + day * 1000 * 60 * 60 * 24 +week*1000*60*60*24*7+ month * 1000 * 60 * 60 * 24 * 30 + year * 1000 * 60 * 60 * 24 * 30 * 12;
         var ts = new Timespan(msvalue, 'ms');
 
         log("----------------value-----------------------");
         log("value:" + ts.valueOf());
+        log("humanize:"+ts.humanize());
 
         log("milliseconds:" + ts.milliseconds());
         log("seconds:" + ts.seconds());
@@ -88,7 +94,10 @@
     $(function () {
         //testFromDates();
         display();
-
+        $("#langbtn").on("click",function(){
+            var lan=$("#lan").val();
+            Timespan.lang(lan);
+        });
         $("#btn").on("click", function () {
             console.clear();
             display();

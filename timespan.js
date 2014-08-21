@@ -155,7 +155,7 @@
             return (+this / (MILLISECONDS_PER_SECOND * SECONDS_PER_MINUTE * MINUTES_PER_HOUR * HOURS_PER_DAY * DAYS_PER_MONTH * MONTHS_PER_YEAR)).toFixed(this._config.digits);
         },
         humanize: function (baseUnit, length) {
-            return this.lang().humanize(this);
+            return this.lang().humanize(this, baseUnit || this._config.baseUnit, length || this._config.length);
         },
         add: function (value, unit) {
             var ms = getMilliseconds(value, unit);
@@ -208,6 +208,28 @@
 
     };
 
+    function _humanize(ts, baseUnit, length, delimiter) {
+        var methods = "years_months_weeks_days_hours_minutes_seconds_milliseconds".split("_");
+        var units = "y_M_w_d_h_m_s_ms".split("_");
+        var i = units.indexOf(baseUnit);
+        if (i < 0)i = units.length - 2;//默认：秒
+        if (length > units.length)length = units.length;
+        if (length <= 0)length = units.length;
+        var texts = [];
+        var len = 0;
+        for (var j = i; j >= 0; j--) {
+            if (len >= length)
+                break;
+            var v = ts[methods[j]]();
+            if (v <= 0)
+                continue;
+
+            var t = (v > 1 ? this.PLURAL[units[j]] : this.SINGLUAR[units[j]]).replace(/%d/i, v);
+            texts.push(t);
+            len++;
+        }
+        return texts.reverse().join(delimiter || "");
+    }
 
     /**
      * 中文-简体
@@ -217,18 +239,12 @@
     }(function (Timespan) {
         return Timespan.lang('zh-cn', {
             humanize: function (ts, baseUnit, length) {
-                var methods = "years_months_weeks_days_hours_minutes_seconds_milliseconds".split("_");
-                var units = "y_M_w_d_h_m_s_ms".split("_");
-                var i = units.indexOf(baseUnit);
-                if (i < 0)i = units.length - 2;//默认：秒
-                if (length > units.length)length = units.length;
+                return _humanize.call(this, ts, baseUnit, length,this.DELIMITER);
 
-
-                var texts = [];
-
-                return this.SINGLUAR["m"].replace(/%d/i, ts.minutes());
             },
+            DELIMITER:"",
             SINGLUAR: {
+                ms: "%d毫秒",
                 s: "%d秒",
                 m: "%d分钟",
                 h: "%d小时",
@@ -238,10 +254,12 @@
                 y: "%d年"
             },
             PLURAL: {
+                ms: "%d毫秒",
                 s: "%d秒",
                 m: "%d分钟",
                 h: "%d小时",
                 d: "%d天",
+                w: "%d周",
                 M: "%d个月",
                 y: "%d年"
             }
@@ -255,9 +273,11 @@
     }(function (Timespan) {
         return Timespan.lang('zh-tw', {
             humanize: function (ts, baseUnit, length) {
-                return this.SINGLUAR["m"].replace(/%d/i, ts.minutes());
+                return _humanize.call(this, ts, baseUnit, length,this.DELIMITER);
             },
+            DELIMITER:"",
             SINGLUAR: {
+                ms: "%d毫秒",
                 s: "%d秒",
                 m: "%d分鐘",
                 h: "%d小時",
@@ -267,6 +287,7 @@
                 y: "%d年"
             },
             PLURAL: {
+                ms: "%d毫秒",
                 s: "%d秒",
                 m: "%d分鐘",
                 h: "%d小時",
@@ -285,11 +306,11 @@
     }(function (Timespan) {
         return Timespan.lang('en', {
             humanize: function (ts, baseUnit, length) {
-                var min = ts.minutes();
-                var text = min > 1 ? this.PLURAL['m'] : this.SINGLUAR['m'];
-                return text.replace(/%d/i, min);
+                return _humanize.call(this, ts, baseUnit, length,this.DELIMITER);
             },
+            DELIMITER:",",
             SINGLUAR: {
+                ms: "%d ms",
                 s: "%d second",
                 m: "%d minute",
                 h: "%d hour",
@@ -299,6 +320,7 @@
                 y: "%d year"
             },
             PLURAL: {
+                ms: "%d ms",
                 s: "%d seconds",
                 m: "%d minutes",
                 h: "%d hours",
@@ -309,7 +331,7 @@
             }
         });
     }));
-    Timespan.lang("en");
+    Timespan.lang("zh-cn");
     if (typeof module !== 'undefined' && module.exports) {
         module.exports = Timespan;
 
