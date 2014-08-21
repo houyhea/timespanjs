@@ -26,7 +26,7 @@
       <file leaf-file-name="testTimespan.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/testTimespan.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="77" column="49" selection-start="2604" selection-end="2604" vertical-scroll-proportion="-9.833333" vertical-offset="1322" max-vertical-offset="2226">
+            <state line="77" column="49" selection-start="2604" selection-end="2604" vertical-scroll-proportion="-14.033334" vertical-offset="1196" max-vertical-offset="2226">
               <folding />
             </state>
           </provider>
@@ -35,7 +35,7 @@
       <file leaf-file-name="timespan.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/timespan.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="30" selection-start="306" selection-end="306" vertical-scroll-proportion="0.2652124" vertical-offset="0" max-vertical-offset="6279">
+            <state line="235" column="7" selection-start="7873" selection-end="7873" vertical-scroll-proportion="0.5419059" vertical-offset="4736" max-vertical-offset="6951">
               <folding />
             </state>
           </provider>
@@ -186,14 +186,14 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/test/testTimespan.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="49" selection-start="2604" selection-end="2604" vertical-scroll-proportion="-9.833333" vertical-offset="1322" max-vertical-offset="2226">
+        <state line="77" column="49" selection-start="2604" selection-end="2604" vertical-scroll-proportion="-14.033334" vertical-offset="1196" max-vertical-offset="2226">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/timespan.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="30" selection-start="306" selection-end="306" vertical-scroll-proportion="0.2652124" vertical-offset="0" max-vertical-offset="6279">
+        <state line="235" column="7" selection-start="7873" selection-end="7873" vertical-scroll-proportion="0.5419059" vertical-offset="4736" max-vertical-offset="6951">
           <folding />
         </state>
       </provider>

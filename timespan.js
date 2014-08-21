@@ -205,7 +205,7 @@
 
 
     /**
-     * 中文
+     * 中文-简体
      */
     (function (factory) {
         factory(Timespan);
@@ -219,6 +219,7 @@
                 m: "%d分钟",
                 h: "%d小时",
                 d: "%d天",
+                w:"%d周",
                 M: "%d个月",
                 y: "%d年"
             },
@@ -232,7 +233,36 @@
             }
         });
     }));
-
+    /**
+     * 中文-繁体
+     */
+    (function (factory) {
+        factory(Timespan);
+    }(function (Timespan) {
+        return Timespan.lang('zh-tw', {
+            humanize: function (ts, baseUnit, length) {
+                return this.SINGLUAR["m"].replace(/%d/i, ts.minutes());
+            },
+            SINGLUAR: {
+                s: "%d秒",
+                m: "%d分鐘",
+                h: "%d小時",
+                d: "%d天",
+                w:"%週",
+                M: "%d個月",
+                y: "%d年"
+            },
+            PLURAL: {
+                s: "%d秒",
+                m: "%d分鐘",
+                h: "%d小時",
+                d: "%d天",
+                w: "%d週",
+                M: "%d個月",
+                y: "%d年"
+            }
+        });
+    }));
     /**
      * 英文
      */
@@ -250,6 +280,7 @@
                 m: "%d minute",
                 h: "%d hour",
                 d: "%d day",
+                w: "%d week",
                 M: "%d month",
                 y: "%d year"
             },
@@ -258,6 +289,7 @@
                 m: "%d minutes",
                 h: "%d hours",
                 d: "%d days",
+                w: "%d weeks",
                 M: "%d months",
                 y: "%d years"
             }
