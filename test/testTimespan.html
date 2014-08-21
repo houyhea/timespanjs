@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <script src="jQuery-1.11.0.min.js"></script>
+    <script src="../timespan.js"></script>
+</head>
+<body>
+<div><span>年</span><input type="text" id="year" value=""/></div>
+
+
+<div><span>月</span><input type="text" id="month" value=""/></div>
+
+
+<div><span>日</span><input type="text" id="day" value=""/></div>
+
+
+<div><span>时</span><input type="text" id="hour" value=""/></div>
+
+
+<div><span>分</span><input type="text" id="min" value=""/></div>
+<div><span>秒</span><input type="text" id="second" value=""/></div>
+<div><span>毫秒</span><input type="text" id="ms" value=""/></div>
+<button id="btn">查看</button>
+
+<script>
+    function log(str) {
+        console.log(str + "\n");
+    }
+    function display() {
+        console.clear();
+        var year = +$("#year").val();
+        var month = +$("#month").val();
+        var day = +$("#day").val();
+        var hour = +$("#hour").val();
+        var min = +$("#min").val();
+        var second = +$("#second").val();
+        var ms = +$("#ms").val();
+
+        var msvalue = ms + second * 1000 + min * 1000 * 60 + hour * 1000 * 60 * 60 + day * 1000 * 60 * 60 * 24 + month * 1000 * 60 * 60 * 24 * 30 + year * 1000 * 60 * 60 * 24 * 30 * 12;
+        var ts = new Timespan(msvalue, 'ms');
+
+        log("---------------------------------------");
+        log("value:" + ts.valueOf());
+
+        log("milliseconds:" + ts.milliseconds());
+        log("seconds:" + ts.seconds());
+        log("minutes:" + ts.minutes());
+        log("hours:" + ts.hours());
+        log("days:" + ts.days());
+        log("weeks:" + ts.weeks());
+        log("months:" + ts.months());
+        log("years:" + ts.years());
+
+        log("---------------as------------------------");
+        log("asmilliseconds:" + ts.asMilliseconds());
+        log("asseconds:" + ts.asSeconds());
+        log("asminutes:" + ts.asMinutes());
+        log("ashours:" + ts.asHours());
+        log("asdays:" + ts.asDays());
+        log("asweeks:" + ts.asWeeks());
+        log("asmonths:" + ts.asMonths());
+        log("asyears:" + ts.asYears());
+
+    }
+    $(function () {
+        display();
+        $("#btn").on("click", function () {
+            display();
+        });
+    });
+</script>
+</body>
+
+</html>
