@@ -75,8 +75,8 @@
 
     var config = {
         digits: 2,       //小数点位数
-        baseUnit:"s",    //最小显示单位，在现有单位中配置，从 y 到 ms
-        length:0        //友好字符串显示组数，如果为0，则显示全部（如果某个单位上为0，则不计入显示）
+        baseUnit: "s",    //最小显示单位，在现有单位中配置，从 y 到 ms
+        length: 0        //友好字符串显示组数，如果为0，则显示全部（如果某个单位上为0，则不计入显示）
     };
     var Timespan = function (value, unit) {
 
@@ -214,6 +214,9 @@
     }(function (Timespan) {
         return Timespan.lang('zh-cn', {
             humanize: function (ts, baseUnit, length) {
+                var units = "y_M_w_d_h_m_s_ms".split("_");
+                var texts = [];
+
                 return this.SINGLUAR["m"].replace(/%d/i, ts.minutes());
             },
             SINGLUAR: {
@@ -221,7 +224,7 @@
                 m: "%d分钟",
                 h: "%d小时",
                 d: "%d天",
-                w:"%d周",
+                w: "%d周",
                 M: "%d个月",
                 y: "%d年"
             },
@@ -250,7 +253,7 @@
                 m: "%d分鐘",
                 h: "%d小時",
                 d: "%d天",
-                w:"%週",
+                w: "%週",
                 M: "%d個月",
                 y: "%d年"
             },
