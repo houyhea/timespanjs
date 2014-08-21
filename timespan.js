@@ -142,14 +142,14 @@
             return (+this / (MILLISECONDS_PER_SECOND * SECONDS_PER_MINUTE * MINUTES_PER_HOUR * HOURS_PER_DAY)).toFixed(this._config.digits);
         },
         asWeeks: function () {
-            return (+this / (MILLISECONDS_PER_SECOND * SECONDS_PER_MINUTE * MINUTES_PER_HOUR * DAYS_PER_WEEK)).toFixed(this._config.digits);
+            return (+this / (MILLISECONDS_PER_SECOND * SECONDS_PER_MINUTE * MINUTES_PER_HOUR * HOURS_PER_DAY* DAYS_PER_WEEK)).toFixed(this._config.digits);
 
         },
         asMonths: function () {
-            return (+this / (MILLISECONDS_PER_SECOND * SECONDS_PER_MINUTE * MINUTES_PER_HOUR * DAYS_PER_MONTH)).toFixed(this._config.digits);
+            return (+this / (MILLISECONDS_PER_SECOND * SECONDS_PER_MINUTE * MINUTES_PER_HOUR * HOURS_PER_DAY*DAYS_PER_MONTH)).toFixed(this._config.digits);
         },
         asYears: function () {
-            return (+this / (MILLISECONDS_PER_SECOND * SECONDS_PER_MINUTE * MINUTES_PER_HOUR * DAYS_PER_MONTH * MONTHS_PER_YEAR)).toFixed(this._config.digits);
+            return (+this / (MILLISECONDS_PER_SECOND * SECONDS_PER_MINUTE * MINUTES_PER_HOUR * HOURS_PER_DAY* DAYS_PER_MONTH * MONTHS_PER_YEAR)).toFixed(this._config.digits);
         },
         humanize: function (baseUnit, length) {
             return this.lang().humanize(this);
