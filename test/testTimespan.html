@@ -7,31 +7,33 @@
     <script src="../timespan.js"></script>
 </head>
 <body>
-<div><span>年</span><input type="text" id="year" value=""/></div>
+<div><span>年</span><input type="text" id="year" value="1"/></div>
 
 
-<div><span>月</span><input type="text" id="month" value=""/></div>
+<div><span>月</span><input type="text" id="month" value="2"/></div>
+
+<div><span>周</span><input type="text" id="week" value="2"/></div>
+<div><span>日</span><input type="text" id="day" value="3"/></div>
 
 
-<div><span>日</span><input type="text" id="day" value=""/></div>
+<div><span>时</span><input type="text" id="hour" value="4"/></div>
 
 
-<div><span>时</span><input type="text" id="hour" value=""/></div>
-
-
-<div><span>分</span><input type="text" id="min" value=""/></div>
-<div><span>秒</span><input type="text" id="second" value=""/></div>
-<div><span>毫秒</span><input type="text" id="ms" value=""/></div>
+<div><span>分</span><input type="text" id="min" value="5"/></div>
+<div><span>秒</span><input type="text" id="second" value="6"/></div>
+<div><span>毫秒</span><input type="text" id="ms" value="7"/></div>
 <button id="btn">查看</button>
+请在console控制台查看结果。
 
 <script>
     function log(str) {
         console.log(str + "\n");
     }
     function display() {
-        console.clear();
+
         var year = +$("#year").val();
         var month = +$("#month").val();
+        var week = +$("#week").val();
         var day = +$("#day").val();
         var hour = +$("#hour").val();
         var min = +$("#min").val();
@@ -41,7 +43,7 @@
         var msvalue = ms + second * 1000 + min * 1000 * 60 + hour * 1000 * 60 * 60 + day * 1000 * 60 * 60 * 24 + month * 1000 * 60 * 60 * 24 * 30 + year * 1000 * 60 * 60 * 24 * 30 * 12;
         var ts = new Timespan(msvalue, 'ms');
 
-        log("---------------------------------------");
+        log("----------------value-----------------------");
         log("value:" + ts.valueOf());
 
         log("milliseconds:" + ts.milliseconds());
@@ -64,9 +66,31 @@
         log("asyears:" + ts.asYears());
 
     }
+    function testFromDates()
+    {
+        log("---------------test fromDates------------------------");
+        var dt=new Date("2014-7-1");
+        var dt1=new Date("2014-8-1 10:12:15:234");
+        var ts=Timespan.fromDates(dt,dt1);
+        log("----------------value-----------------------");
+        log("value:" + ts.valueOf());
+
+        log("milliseconds:" + ts.milliseconds());
+        log("seconds:" + ts.seconds());
+        log("minutes:" + ts.minutes());
+        log("hours:" + ts.hours());
+        log("days:" + ts.days());
+        log("weeks:" + ts.weeks());
+        log("months:" + ts.months());
+        log("years:" + ts.years());
+
+    }
     $(function () {
+        testFromDates();
         display();
+
         $("#btn").on("click", function () {
+            console.clear();
             display();
         });
     });

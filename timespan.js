@@ -83,7 +83,8 @@
     }
     Timespan.version = VERSION;
     Timespan.fromDates = function (startDate, endDate) {
-
+        var msec = Math.abs(startDate.getTime() - endDate.getTime());
+        return new Timespan(msec, 'ms');
     }
     var getLang = function (key) {
         return languages[key];
@@ -107,10 +108,15 @@
             return Math.floor(this.msec / (MILLISECONDS_PER_SECOND * SECONDS_PER_MINUTE * MINUTES_PER_HOUR)) % HOURS_PER_DAY;
         },
         days: function () {
-            return Math.floor(this.msec / (MILLISECONDS_PER_SECOND * SECONDS_PER_MINUTE * MINUTES_PER_HOUR * HOURS_PER_DAY)) % DAYS_PER_MONTH;
+            var days = Math.floor(this.msec / (MILLISECONDS_PER_SECOND * SECONDS_PER_MINUTE * MINUTES_PER_HOUR * HOURS_PER_DAY)) % DAYS_PER_MONTH;
+            if (days >= DAYS_PER_WEEK)
+                return days % DAYS_PER_WEEK;
+            else
+                return days;
         },
         weeks: function () {
-            return Math.floor(this.days() / DAYS_PER_WEEK);
+            var days = Math.floor(this.msec / (MILLISECONDS_PER_SECOND * SECONDS_PER_MINUTE * MINUTES_PER_HOUR * HOURS_PER_DAY)) % DAYS_PER_MONTH;
+            return Math.floor(days / DAYS_PER_WEEK);
         },
         months: function () {
             return Math.floor(this.msec / (MILLISECONDS_PER_SECOND * SECONDS_PER_MINUTE * MINUTES_PER_HOUR * HOURS_PER_DAY * DAYS_PER_MONTH)) % MONTHS_PER_YEAR;
