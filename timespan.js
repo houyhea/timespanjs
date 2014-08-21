@@ -55,8 +55,8 @@
     }
 
     function extend(a, b) {
-        if(!b|| !a)
-           return a;
+        if (!b || !a)
+            return a;
 
         for (var i in b) {
             if (b.hasOwnProperty(i)) {
@@ -81,10 +81,10 @@
         baseUnit: "s",    //最小显示单位，在现有单位中配置，从 y 到 ms
         length: 0        //友好字符串显示组数，如果为0，则显示全部（如果某个单位上为0，则不计入显示）
     };
-    var Timespan = function (value, unit,config) {
+    var Timespan = function (value, unit, config) {
 
         this.msec = getMilliseconds(value, unit);
-        this._config = extend(CONFIG,config);
+        this._config = extend(CONFIG, config);
     }
     Timespan.version = VERSION;
     Timespan.fromDates = function (startDate, endDate) {
@@ -145,14 +145,14 @@
             return (+this / (MILLISECONDS_PER_SECOND * SECONDS_PER_MINUTE * MINUTES_PER_HOUR * HOURS_PER_DAY)).toFixed(this._config.digits);
         },
         asWeeks: function () {
-            return (+this / (MILLISECONDS_PER_SECOND * SECONDS_PER_MINUTE * MINUTES_PER_HOUR * HOURS_PER_DAY* DAYS_PER_WEEK)).toFixed(this._config.digits);
+            return (+this / (MILLISECONDS_PER_SECOND * SECONDS_PER_MINUTE * MINUTES_PER_HOUR * HOURS_PER_DAY * DAYS_PER_WEEK)).toFixed(this._config.digits);
 
         },
         asMonths: function () {
-            return (+this / (MILLISECONDS_PER_SECOND * SECONDS_PER_MINUTE * MINUTES_PER_HOUR * HOURS_PER_DAY*DAYS_PER_MONTH)).toFixed(this._config.digits);
+            return (+this / (MILLISECONDS_PER_SECOND * SECONDS_PER_MINUTE * MINUTES_PER_HOUR * HOURS_PER_DAY * DAYS_PER_MONTH)).toFixed(this._config.digits);
         },
         asYears: function () {
-            return (+this / (MILLISECONDS_PER_SECOND * SECONDS_PER_MINUTE * MINUTES_PER_HOUR * HOURS_PER_DAY* DAYS_PER_MONTH * MONTHS_PER_YEAR)).toFixed(this._config.digits);
+            return (+this / (MILLISECONDS_PER_SECOND * SECONDS_PER_MINUTE * MINUTES_PER_HOUR * HOURS_PER_DAY * DAYS_PER_MONTH * MONTHS_PER_YEAR)).toFixed(this._config.digits);
         },
         humanize: function (baseUnit, length) {
             return this.lang().humanize(this);
@@ -217,7 +217,13 @@
     }(function (Timespan) {
         return Timespan.lang('zh-cn', {
             humanize: function (ts, baseUnit, length) {
+                var methods = "years_months_weeks_days_hours_minutes_seconds_milliseconds".split("_");
                 var units = "y_M_w_d_h_m_s_ms".split("_");
+                var i = units.indexOf(baseUnit);
+                if (i < 0)i = units.length - 2;//默认：秒
+                if (length > units.length)length = units.length;
+
+
                 var texts = [];
 
                 return this.SINGLUAR["m"].replace(/%d/i, ts.minutes());
