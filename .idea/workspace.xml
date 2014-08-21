@@ -35,7 +35,7 @@
       <file leaf-file-name="timespan.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/timespan.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="82" column="5" selection-start="2481" selection-end="2481" vertical-scroll-proportion="0.49368542" vertical-offset="1355" max-vertical-offset="6279">
+            <state line="11" column="30" selection-start="306" selection-end="306" vertical-scroll-proportion="0.2652124" vertical-offset="0" max-vertical-offset="6279">
               <folding />
             </state>
           </provider>
@@ -54,8 +54,8 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/timespan.js" />
         <option value="$PROJECT_DIR$/test/testTimespan.html" />
+        <option value="$PROJECT_DIR$/timespan.js" />
       </list>
     </option>
   </component>
@@ -193,7 +193,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/timespan.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="5" selection-start="2481" selection-end="2481" vertical-scroll-proportion="0.49368542" vertical-offset="1355" max-vertical-offset="6279">
+        <state line="11" column="30" selection-start="306" selection-end="306" vertical-scroll-proportion="0.2652124" vertical-offset="0" max-vertical-offset="6279">
           <folding />
         </state>
       </provider>

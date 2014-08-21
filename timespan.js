@@ -1,5 +1,5 @@
 /**
- * Created by zhangyongn on 14-8-20.
+ * Created by houyhea on 14-8-20.
  */
 (function () {
     var VERSION = "0.0.1",
