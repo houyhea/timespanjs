@@ -55,6 +55,9 @@
     }
 
     function extend(a, b) {
+        if(!b|| !a)
+           return a;
+
         for (var i in b) {
             if (b.hasOwnProperty(i)) {
                 a[i] = b[i];
@@ -73,15 +76,15 @@
     }
 
 
-    var config = {
+    var CONFIG = {
         digits: 2,       //小数点位数
         baseUnit: "s",    //最小显示单位，在现有单位中配置，从 y 到 ms
         length: 0        //友好字符串显示组数，如果为0，则显示全部（如果某个单位上为0，则不计入显示）
     };
-    var Timespan = function (value, unit) {
+    var Timespan = function (value, unit,config) {
 
         this.msec = getMilliseconds(value, unit);
-        this._config = config;
+        this._config = extend(CONFIG,config);
     }
     Timespan.version = VERSION;
     Timespan.fromDates = function (startDate, endDate) {
