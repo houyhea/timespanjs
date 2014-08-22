@@ -1,26 +1,36 @@
 /**
  * Created by houyhea on 14-8-20.
+ * copyright © houyhea{at}126.com www.timespanjs.com
+ *
  */
 (function () {
-    var VERSION = "0.0.1",
+    var VERSION = "0.0.2",
         globalScope = typeof global !== 'undefined' ? global : this,
-        oldGlobalMoment;
+        oldGlobalMoment,
+        languages = {},
+        MILLISECONDS_PER_SECOND = 1000,
+        SECONDS_PER_MINUTE = 60,
+        MINUTES_PER_HOUR = 60,
+        HOURS_PER_DAY = 24,
+        DAYS_PER_WEEK = 7,
+        DAYS_PER_MONTH = 30,    //由于这里体现的是相对值（差值），所以这里统一规定：一个月就是30天
+        MONTHS_PER_YEAR = 12,    //统一规定，一年360天。
+        CONFIG = {
+            digits: 2,         //小数点位数
+            baseUnit: "s",     //最小显示单位，在现有单位中配置，从 y 到 ms
+            length: 0          //友好字符串显示组数，如果为0，则显示全部（如果某个单位上为0，则不计入显示）
+        };
 
-    var languages = {};
-    var MILLISECONDS_PER_SECOND = 1000;
-    var SECONDS_PER_MINUTE = 60;
-    var MINUTES_PER_HOUR = 60;
-    var HOURS_PER_DAY = 24;
-    var DAYS_PER_WEEK = 7;
-    var DAYS_PER_MONTH = 30;//由于这里体现的是相对值（差值），所以这里统一规定：一个月就是30天
-    var MONTHS_PER_YEAR = 12;
-
+    /*******************************************************
+     private functions
+     *******************************************************/
     function getMilliseconds(value, unit) {
         var ret = value;
         switch (unit) {
             case "milliseconds":
             case "ms":
                 ret = value;
+            default :
                 break;
             case "seconds":
             case "s":
@@ -75,30 +85,70 @@
         return a;
     }
 
-
-    var CONFIG = {
-        digits: 2,       //小数点位数
-        baseUnit: "s",    //最小显示单位，在现有单位中配置，从 y 到 ms
-        length: 0        //友好字符串显示组数，如果为0，则显示全部（如果某个单位上为0，则不计入显示）
-    };
-    var Timespan = function (value, unit, config) {
-
-        this.msec = getMilliseconds(value, unit);
-        this._config = extend(CONFIG, config);
-    }
-    Timespan.version = VERSION;
-    Timespan.fromDates = function (startDate, endDate) {
-        var msec = Math.abs(startDate.getTime() - endDate.getTime());
-        return new Timespan(msec, 'ms');
-    }
-    var getLang = function (key) {
+    function getLang(key) {
         return languages[key];
     }
-    var loadLang = function (key, value) {
+
+    function loadLang(key, value) {
         value.abbr = key;
         languages[key] = value;
         return languages[key];
     }
+
+    function _humanize(ts, baseUnit, length, delimiter) {
+        var methods = "years_months_weeks_days_hours_minutes_seconds_milliseconds".split("_");
+        var units = "y_M_w_d_h_m_s_ms".split("_");
+        var i = units.indexOf(baseUnit);
+        if (i < 0)i = units.length - 2;//默认：秒
+        if (length > units.length)length = units.length;
+        if (length <= 0)length = units.length;
+        var texts = [];
+        var len = 0;
+        for (var j = i; j >= 0; j--) {
+            if (len >= length)
+                break;
+            var v = ts[methods[j]]();
+            if (v <= 0)
+                continue;
+
+            var t = (v > 1 ? this.PLURAL[units[j]] : this.SINGLUAR[units[j]]).replace(/%d/i, v);
+            texts.push(t);
+            len++;
+        }
+        return texts.reverse().join(delimiter || "");
+    }
+
+    /******************************************************
+     Timespan class
+     *******************************************************/
+
+    /**
+     *构造函数
+     * @param value 必须，number类型。时间差值
+     * @param unit 可选，指定value的单位。默认：ms，可选值：y|years,M|months,d|days,h|hours,m|minutes,s|seconds,ms|milliseconds
+     * @param config 可选，配置参数。
+     * @constructor
+     */
+    var Timespan = function (value, unit, config) {
+
+        unit = unit || "ms";
+        this.msec = getMilliseconds(value, unit);
+        this._config = extend(CONFIG, config);
+    }
+
+    /**
+     * 通过javascript Date对象获取Timespan实例
+     * @param startDate 起始日期，必须
+     * @param endDate 结束日期，可选。默认:now
+     * @returns {Timespan}
+     */
+    Timespan.fromDates = function (startDate, endDate) {
+        var msec = Math.abs(startDate.getTime() - endDate.getTime());
+        return new Timespan(msec, 'ms');
+    }
+
+    Timespan.version = VERSION;
+
     Timespan.prototype = {
         milliseconds: function () {
             return this.msec % MILLISECONDS_PER_SECOND;
@@ -208,41 +258,22 @@
 
     };
 
-    function _humanize(ts, baseUnit, length, delimiter) {
-        var methods = "years_months_weeks_days_hours_minutes_seconds_milliseconds".split("_");
-        var units = "y_M_w_d_h_m_s_ms".split("_");
-        var i = units.indexOf(baseUnit);
-        if (i < 0)i = units.length - 2;//默认：秒
-        if (length > units.length)length = units.length;
-        if (length <= 0)length = units.length;
-        var texts = [];
-        var len = 0;
-        for (var j = i; j >= 0; j--) {
-            if (len >= length)
-                break;
-            var v = ts[methods[j]]();
-            if (v <= 0)
-                continue;
-
-            var t = (v > 1 ? this.PLURAL[units[j]] : this.SINGLUAR[units[j]]).replace(/%d/i, v);
-            texts.push(t);
-            len++;
-        }
-        return texts.reverse().join(delimiter || "");
-    }
+    /******************************************************
+     languages
+     *******************************************************/
 
     /**
-     * 中文-简体
+     * 中文-简体(zh-cn)
      */
     (function (factory) {
         factory(Timespan);
     }(function (Timespan) {
         return Timespan.lang('zh-cn', {
             humanize: function (ts, baseUnit, length) {
-                return _humanize.call(this, ts, baseUnit, length,this.DELIMITER);
+                return _humanize.call(this, ts, baseUnit, length, this.DELIMITER);
 
             },
-            DELIMITER:"",
+            DELIMITER: "",
             SINGLUAR: {
                 ms: "%d毫秒",
                 s: "%d秒",
@@ -266,16 +297,16 @@
         });
     }));
     /**
-     * 中文-繁体
+     * 中文-繁体(zh-tw)
      */
     (function (factory) {
         factory(Timespan);
     }(function (Timespan) {
         return Timespan.lang('zh-tw', {
             humanize: function (ts, baseUnit, length) {
-                return _humanize.call(this, ts, baseUnit, length,this.DELIMITER);
+                return _humanize.call(this, ts, baseUnit, length, this.DELIMITER);
             },
-            DELIMITER:"",
+            DELIMITER: "",
             SINGLUAR: {
                 ms: "%d毫秒",
                 s: "%d秒",
@@ -299,16 +330,16 @@
         });
     }));
     /**
-     * 英文
+     * 英文(en)
      */
     (function (factory) {
         factory(Timespan);
     }(function (Timespan) {
         return Timespan.lang('en', {
             humanize: function (ts, baseUnit, length) {
-                return _humanize.call(this, ts, baseUnit, length,this.DELIMITER);
+                return _humanize.call(this, ts, baseUnit, length, this.DELIMITER);
             },
-            DELIMITER:",",
+            DELIMITER: ",",
             SINGLUAR: {
                 ms: "%d ms",
                 s: "%d second",
@@ -331,7 +362,12 @@
             }
         });
     }));
-    Timespan.lang("zh-cn");
+    Timespan.lang("zh-cn");//设置默认语言
+
+    Timespan.noConflict = function () {
+        globalScope.Timespan = oldGlobalMoment;
+        return Timespan;
+    }
     if (typeof module !== 'undefined' && module.exports) {
         module.exports = Timespan;
 
@@ -341,6 +377,7 @@
         });
     }
     else {
+        oldGlobalMoment = globalScope.Timespan;
         globalScope.Timespan = Timespan;
     }
 
