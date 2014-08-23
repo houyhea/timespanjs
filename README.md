@@ -9,4 +9,4 @@
 见[https://github.com/houyhea/timespanjs/blob/master/test/testTimespan.html](https://github.com/houyhea/timespanjs/blob/master/test/testTimespan.html)。请获取并运行即可。
 ##帮助
 支付宝赞助（houyhea）：  
-![赞助](https://raw.githubusercontent.com/houyhea/lab/master/alipayqrcode.png) 
+![赞助](https://raw.githubusercontent.com/houyhea/lab/master/alipayqrcode.png)
