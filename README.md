@@ -7,10 +7,33 @@
 
 
 ###如何使用
-1. 创建Timespan对象。可以通过构造函数中传递时间差值创建，也可以通过传递两个Date对象实例创建。
-2. 调用humanize实例方法，获取人性化显示字符串。
-3. 调用Timespan.lang()，设置语言。
-比如：
+1. 通过script标签引入timespanjs脚本文件。如果使用requirejs，则需要通过require.config配置timespan路径。
+2. 创建Timespan对象。可以通过构造函数中传递时间差值创建，也可以通过传递两个Date对象实例创建。
+3. 调用humanize实例方法，获取人性化显示字符串。
+4. 调用Timespan.lang()，设置语言。
+
+####浏览器下的引用
+```js
+<script src="timespan.js"></script>
+<script>
+    var ts=new Timespan(85,'m');
+</script>
+```
+####requirejs下的引用
+```js
+require.config({
+    paths: {
+        "timespanjs": "path/to/timespan",
+    }
+});
+define(["timespanjs"], function (Timespan) {
+    var ts=new Timespan(85,'m');
+});
+```
+####node.js下的引用
+  
+
+####调用示例：
 ```js
 //该值表示为：3小时4分钟25秒30毫秒
 var msvalue = 30 + 1000 * 25 + 1000 * 60 * 4 + 1000 * 60 * 60 * 3;

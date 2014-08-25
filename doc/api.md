@@ -1,6 +1,6 @@
 # Timespanjs API
 
-本文档描述timespanjs的方法。
+本文档描述timespanjs的api接口方法及属性。
 
 ## 静态方法
 ### Timespan.fromDates(startDate, endDate)
