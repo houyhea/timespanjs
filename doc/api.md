@@ -5,9 +5,9 @@
 ## 静态方法
 ### Timespan.fromDates(startDate, endDate)
 通过javascript Date对象获取Timespan实例。
-#### startDate:Date类型
+###### startDate:Date类型
 起始日期，必须。
-#### endDate:Date类型
+###### endDate:Date类型
 结束日期，可选。默认:now。
 
 
