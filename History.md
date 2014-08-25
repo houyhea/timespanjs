@@ -3,7 +3,8 @@
 ## v0.0.2
 1. 完善主体代码逻辑
 2. 添加History.md
-3. 添加LICENSE(MIT)  
+3. 添加LICENSE(MIT)
+4. 添加api.md
 ## v0.0.1
 1. 创建库
 2. 添加基本文件  

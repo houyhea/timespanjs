@@ -78,8 +78,7 @@ Timespan对象实例。
 
 ##对象方法
 
-### constructor
-####Timespan(value, unit, config)
+### Timespan(value, unit, config)
 Timespan构造器。通过该构造器，构造Timespan对象实例。
 ######value
 时间差值。
@@ -110,3 +109,30 @@ var v = 85;
 var ts = new Timespan(v, 'minutes');//'minutes'或'm'都是表示分钟。该ts对象实例表示85分钟。
 
 ```
+###humanize(baseUnit, length)
+
+###milliseconds()
+###seconds()
+###minutes()
+###hours()
+###days()
+###weeks()
+###months()
+###years()
+###asMilliseconds()
+###asSeconds()
+###asMinutes()
+###asHours()
+###asDays()
+###asWeeks()
+###asMonths()
+###asYears()
+
+
+###add()
+###subtract()
+###set()
+###config()
+###lang()
+###toString()
+###valueOf()
