@@ -4,6 +4,7 @@
  *
  */
 (function () {
+    'use strict';
     var VERSION = "0.0.2",
         globalScope = typeof global !== 'undefined' ? global : this,
         oldGlobalMoment,
@@ -143,11 +144,30 @@
      * @returns {Timespan}
      */
     Timespan.fromDates = function (startDate, endDate) {
+        endDate=endDate||Date.now();
         var msec = Math.abs(startDate.getTime() - endDate.getTime());
         return new Timespan(msec, 'ms');
     }
 
     Timespan.version = VERSION;
+    /**
+     * 设置当前语言（如果value为空），添加语言（如果value不为空）
+     * @param key 语言键
+     * @param value 语言对象
+     * @returns {string|n.abbr|*|abbr}
+     */
+    Timespan.lang = function (key, value) {
+        if (!key) {
+            return Timespan.prototype._lang.abbr;
+        }
+        if (value) {
+            var l = loadLang(key, value);
+        } else {
+            var r = Timespan.prototype._lang = getLang(key);
+            return r.abbr;
+        }
+
+    };
 
     Timespan.prototype = {
         milliseconds: function () {
@@ -239,24 +259,7 @@
 
     };
 
-    /**
-     * 设置当前语言（如果value为空），添加语言（如果value不为空）
-     * @param key 语言键
-     * @param value 语言对象
-     * @returns {string|n.abbr|*|abbr}
-     */
-    Timespan.lang = function (key, value) {
-        if (!key) {
-            return Timespan.prototype._lang.abbr;
-        }
-        if (value) {
-            var l = loadLang(key, value);
-        } else {
-            var r = Timespan.prototype._lang = getLang(key);
-            return r.abbr;
-        }
 
-    };
 
     /******************************************************
      languages
