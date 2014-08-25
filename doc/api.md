@@ -56,7 +56,7 @@ Timespan.lang('en', {
         }
 ```
 ##### humanize(ts, baseUnit, length)
-该方法实现具体的时间差人性化显示。返回而人性化字符串。
+该方法实现具体的时间差人性化显示。返回人性化字符串。
 ###### ts
 Timespan对象实例。
 
@@ -75,5 +75,9 @@ Timespan对象实例。
 显示单位的长度。最大不能超过：8。最小：1.超过则默认为8。
 ### Timespan.noConflict()
 冲突处理方法。通过该方法返回Timespan类。解决全局命名空间冲突问题。
+
+##对象方法
+
+### constructor
 
 
