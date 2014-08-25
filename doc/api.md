@@ -126,9 +126,9 @@ str=ts.humanize();//str='25分钟'
 ###milliseconds()
 返回时间差的毫秒位上的值。比如：
 ```js
-var v = 85;
-var ts = new Timespan(v, 'minutes');//'minutes'或'm'都是表示分钟。该ts对象实例表示85分钟。
-var msv=ts.milliseconds();//msv=25。如果要返回85，请使用asMilliseconds()。
+var v = 1025;
+var ts = new Timespan(v, 'ms');
+var msv=ts.milliseconds();//msv=25。如果要返回1025，请使用asMilliseconds()。
 ```
 ###seconds()
 返回时间差的秒位上的值。
@@ -147,10 +147,10 @@ var msv=ts.milliseconds();//msv=25。如果要返回85，请使用asMilliseconds
 ###asMilliseconds()
 返回时间差以毫秒为单位的值。该方法与milliseconds()有区别，具体区别见示例：
 ```js
-var v = 85;
-var ts = new Timespan(v, 'minutes');//'minutes'或'm'都是表示分钟。该ts对象实例表示85分钟。
+var v = 1025;
+var ts = new Timespan(v, 'ms');
 var msv=ts.milliseconds();//msv=25。
-var asmsv=ts.asMilliseconds();//msv=85。
+var asmsv=ts.asMilliseconds();//asmsv=1025。
 ```
 
 ###asSeconds()
@@ -175,8 +175,8 @@ var asmsv=ts.asMilliseconds();//msv=85。
 var v = 85;
 var ts = new Timespan(v, 'minutes');//'minutes'或'm'都是表示分钟。该ts对象实例表示85分钟。
 ts.add(5,'m');
-var msv=ts.milliseconds();//msv=30。
-var asmsv=ts.asMilliseconds();//msv=90。
+var mv=ts.minutes();//mv=30。
+
 ```
 ######value
 时间差值。
@@ -191,11 +191,11 @@ var asmsv=ts.asMilliseconds();//msv=90。
 var v = 85;
 var ts = new Timespan(v, 'minutes');//'minutes'或'm'都是表示分钟。该ts对象实例表示85分钟。
 
-var msv=ts.milliseconds();//msv=25。
-var asmsv=ts.asMilliseconds();//msv=85。
+var msv=ts.minutes();//msv=25。
+var asmsv=ts.asMinutes();//asmsv=85。
 ts.set(34,'m');
-msv=ts.milliseconds();//msv=34。
-asmsv=ts.asMilliseconds();//msv=34。
+msv=ts.minutes();//msv=34。
+asmsv=ts.asMinutes();//asmsv=34。
 ```
 ###config(config)
 设置时间差对象的配置参数。比如：
