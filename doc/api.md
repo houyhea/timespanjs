@@ -4,11 +4,11 @@
 
 ## 静态方法
 ### Timespan.fromDates(startDate, endDate)
-通过javascript Date对象获取Timespan实例
+通过javascript Date对象获取Timespan实例。
 #### startDate:Date类型
-起始日期，必须
+起始日期，必须。
 #### endDate:Date类型
-结束日期，可选。默认:now
+结束日期，可选。默认:now。
 
 
 ```js
@@ -18,7 +18,7 @@ var ts=Timespan.fromDates(dt,dt1);
 ```
 
 ### Timespan.version
-获取Timespanjs的版本信息
+获取Timespanjs的版本信息。
 ### Timespan.lang(key, value)
 设置(获取）当前语言（如果value为空），添加语言（如果value不为空）
 如果不传任何参数，则返回当前语言选项配置。
@@ -59,7 +59,7 @@ Timespan.lang('en', {
 ##### humanize(ts, baseUnit, length)
 该方法实现具体的时间差人性化显示。返回而人性化字符串。
 ###### ts
-Timespan对象实例
+Timespan对象实例。
 
 ###### baseUnit
 基本显示单位，可选值：
@@ -70,7 +70,7 @@ Timespan对象实例
 + h。表示：小时
 + m。表示：分钟
 + s。表示：秒
-+ ms。表示：毫秒  
++ ms。表示：毫秒
 ###### length:显示长度
-显示单位的长度。最大不能超过：8。最小：1.超过则默认为8.
+显示单位的长度。最大不能超过：8。最小：1.超过则默认为8。
 
