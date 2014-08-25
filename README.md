@@ -10,6 +10,7 @@
 ###如何使用
 1. 创建Timespan对象。可以通过构造函数中传递时间差值创建，也可以通过传递两个Date对象实例创建。
 2. 调用humanize实例方法，获取人性化显示字符串。
+3. 调用Timespan.lang()，设置语言。
 比如：
 ```js
 //该值表示为：3小时4分钟25秒30毫秒
@@ -23,6 +24,10 @@ var dt1 = new Date("2014-8-1 10:12:15:234");
 var ts = Timespan.fromDates(dt, dt1);
 console.log(ts.humanize());
 //输出：1个月1天10小时12分钟15秒，234毫秒未输出，因为baseUnit参数默认是:'s'
+Timespan.lang('en');
+console.log(ts.humanize());
+//输出：1 month,1 day,10 hours,12 minutes,15 seconds
+
 ```
 ##API说明
 见[api说明](https://github.com/houyhea/timespanjs/blob/master/doc/api.md)。
