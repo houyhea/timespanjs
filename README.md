@@ -32,6 +32,10 @@ console.log(ts.humanize());
 见[api说明](https://github.com/houyhea/timespanjs/blob/master/doc/api.md)。
 ##测试用例
 见[https://github.com/houyhea/timespanjs/blob/master/test/testTimespan.html](https://github.com/houyhea/timespanjs/blob/master/test/testTimespan.html)。请获取并运行即可。
+##浏览器兼容性
+兼容IE8+,chrome,firefox。
+##依赖
+不需要依赖其他库。
 ##协议
 采用[MIT 许可协议](https://github.com/houyhea/timespanjs/blob/master/LICENSE)。
 ##帮助
