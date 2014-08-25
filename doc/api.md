@@ -62,16 +62,16 @@ Timespan对象实例。
 
 ###### baseUnit
 基本显示单位，可选值：
-+ y。表示：年
-+ M。表示：月
-+ w。表示：周
-+ d。表示：日
-+ h。表示：小时
-+ m。表示：分钟
-+ s。表示：秒
-+ ms。表示：毫秒
++ 'y'。表示：年
++ 'M'。表示：月
++ 'w'。表示：周
++ 'd'。表示：日
++ 'h'。表示：小时
++ 'm'。表示：分钟
++ 's'。表示：秒
++ 'ms'。表示：毫秒
 
-###### length:显示长度
+###### length
 显示单位的长度。最大不能超过：8。最小：1.超过则默认为8。
 ### Timespan.noConflict()
 冲突处理方法。通过该方法返回Timespan类。解决全局命名空间冲突问题。
@@ -79,5 +79,34 @@ Timespan对象实例。
 ##对象方法
 
 ### constructor
+####Timespan(value, unit, config)
+Timespan构造器。通过该构造器，构造Timespan对象实例。
+######value
+时间差值。
+######unit
+时间差值单位。可选，如果不传，默认是ms。
+可选值：
++ 'y'或'years'。表示：年
++ 'M'或'months'。表示：月
++ 'w'或'weeks'。表示：周
++ 'd'或'days'。表示：日
++ 'h'或'hours'。表示：小时
++ 'm'或'minutes'。表示：分钟
++ 's'或'seconds'。表示：秒
++ 'ms'或'milliseconds'。表示：毫秒
 
+######config
+相关配置参数。主要有如下：
+```js
+CONFIG = {
+            digits: 2,         //小数点位数,会影响到时间差的相关时间值的获取方法的返回精度（asxxxx方法），以及humanize方法的返回精度。
+            baseUnit: "s",     //最小显示单位，在现有单位中配置，从 'y' 到 'ms'。
+            length: 0          //友好字符串显示组数，如果为0，则显示全部（如果某个单位上为0，则不计入显示）。
+        };
+```
+示例：
+```js
+var v = 85;
+var ts = new Timespan(v, 'minutes');//'minutes'或'm'都是表示分钟。该ts对象实例表示85分钟。
 
+```
