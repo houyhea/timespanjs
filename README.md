@@ -5,7 +5,6 @@
 + 中文繁体（zh-tw）
 + 英文（en）
 
-采用[MIT 许可协议](https://github.com/houyhea/timespanjs/blob/master/LICENSE)。
 
 ###如何使用
 1. 创建Timespan对象。可以通过构造函数中传递时间差值创建，也可以通过传递两个Date对象实例创建。
@@ -33,6 +32,8 @@ console.log(ts.humanize());
 见[api说明](https://github.com/houyhea/timespanjs/blob/master/doc/api.md)。
 ##测试用例
 见[https://github.com/houyhea/timespanjs/blob/master/test/testTimespan.html](https://github.com/houyhea/timespanjs/blob/master/test/testTimespan.html)。请获取并运行即可。
+##协议
+采用[MIT 许可协议](https://github.com/houyhea/timespanjs/blob/master/LICENSE)。
 ##帮助
 支付宝赞助（houyhea）：  
 ![赞助](https://raw.githubusercontent.com/houyhea/lab/master/alipayqrcode.png)
