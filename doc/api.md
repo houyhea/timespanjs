@@ -198,7 +198,9 @@ msv=ts.minutes();//msv=34。
 asmsv=ts.asMinutes();//asmsv=34。
 ```
 ###config(config)
-设置时间差对象的配置参数。比如：
+设置时间差对象的配置参数。
+######config
+配置参数对象。比如：
 ```js
 var v = 85;
 var ts = new Timespan(v, 'minutes');//'minutes'或'm'都是表示分钟。该ts对象实例表示85分钟。
