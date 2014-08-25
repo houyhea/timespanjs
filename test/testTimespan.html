@@ -25,7 +25,8 @@
 <button id="btn">查看</button>
 请在console控制台查看结果。
 
-<div><span>语言：</span><input type="text" id="lan" value="zh-cn"/></div><button id="langbtn">设置语言</button>
+<div><span>语言：</span><input type="text" id="lan" value="zh-cn"/></div>
+<button id="langbtn">设置语言</button>
 
 <script>
     function log(str) {
@@ -43,12 +44,12 @@
         var ms = +$("#ms").val();
 
 
-        var msvalue = ms + second * 1000 + min * 1000 * 60 + hour * 1000 * 60 * 60 + day * 1000 * 60 * 60 * 24 +week*1000*60*60*24*7+ month * 1000 * 60 * 60 * 24 * 30 + year * 1000 * 60 * 60 * 24 * 30 * 12;
+        var msvalue = ms + second * 1000 + min * 1000 * 60 + hour * 1000 * 60 * 60 + day * 1000 * 60 * 60 * 24 + week * 1000 * 60 * 60 * 24 * 7 + month * 1000 * 60 * 60 * 24 * 30 + year * 1000 * 60 * 60 * 24 * 30 * 12;
         var ts = new Timespan(msvalue, 'ms');
 
         log("----------------value-----------------------");
         log("value:" + ts.valueOf());
-        log("humanize:"+ts.humanize());
+        log("humanize:" + ts.humanize());
 
         log("milliseconds:" + ts.milliseconds());
         log("seconds:" + ts.seconds());
@@ -58,9 +59,9 @@
         log("weeks:" + ts.weeks());
         log("months:" + ts.months());
         log("years:" + ts.years());
-        ts.add(1,"y");
+        ts.add(1, "y");
         log("years:" + ts.years());
-        ts.subtract(1,"d");
+        ts.subtract(1, "d");
         log("days:" + ts.days());
         log("weeks:" + ts.weeks());
 
@@ -75,12 +76,13 @@
         log("asyears:" + ts.asYears());
 
     }
-    function testFromDates()
-    {
+    function testFromDates() {
+
+
         log("---------------test fromDates------------------------");
-        var dt=new Date("2014-7-1");
-        var dt1=new Date("2014-8-1 10:12:15:234");
-        var ts=Timespan.fromDates(dt,dt1);
+        var dt = new Date("2014-7-1");
+        var dt1 = new Date("2014-8-1 10:12:15:234");
+        var ts = Timespan.fromDates(dt, dt1);
         log("----------------value-----------------------");
         log(ts.humanize());
         log("value:" + ts.valueOf());
@@ -98,8 +100,8 @@
     $(function () {
         testFromDates();
         display();
-        $("#langbtn").on("click",function(){
-            var lan=$("#lan").val();
+        $("#langbtn").on("click", function () {
+            var lan = $("#lan").val();
             Timespan.lang(lan);
         });
         $("#btn").on("click", function () {
