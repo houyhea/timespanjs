@@ -82,6 +82,7 @@
         var dt1=new Date("2014-8-1 10:12:15:234");
         var ts=Timespan.fromDates(dt,dt1);
         log("----------------value-----------------------");
+        log(ts.humanize());
         log("value:" + ts.valueOf());
 
         log("milliseconds:" + ts.milliseconds());
@@ -95,7 +96,7 @@
 
     }
     $(function () {
-        //testFromDates();
+        testFromDates();
         display();
         $("#langbtn").on("click",function(){
             var lan=$("#lan").val();
