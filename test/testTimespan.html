@@ -80,8 +80,11 @@
 
 
         log("---------------test fromDates------------------------");
-        var dt = new Date("2014-7-1");
-        var dt1 = new Date("2014-8-1 10:12:15:234");
+        //var dt = new Date("2014-7-1");
+//        var dt1 = new Date("2014-8-1 10:12:15:234");
+        var dt=new Date(2014,7,1);
+        var dt1=new Date(2014,8,1,10,12,15,234);
+
         var ts = Timespan.fromDates(dt, dt1);
         log("----------------value-----------------------");
         log(ts.humanize());

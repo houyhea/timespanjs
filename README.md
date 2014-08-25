@@ -18,8 +18,8 @@ var ts = new Timespan(msvalue, 'ms');
 console.log(ts.humanize());//输出为：3小时4分钟25秒30毫秒
 
 //通过fromDates方法构造
-var dt = new Date("2014-7-1");
-var dt1 = new Date("2014-8-1 10:12:15:234");
+var dt=new Date(2014,7,1);
+var dt1=new Date(2014,8,1,10,12,15,234);
 var ts = Timespan.fromDates(dt, dt1);
 console.log(ts.humanize());
 //输出：1个月1天10小时12分钟15秒，234毫秒未输出，因为baseUnit参数默认是:'s'

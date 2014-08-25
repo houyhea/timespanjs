@@ -11,8 +11,8 @@
 结束日期，可选。默认:now。
 
 ```js
-var dt=new Date("2014-7-1");
-var dt1=new Date("2014-8-1 10:12:15:234");
+var dt=new Date(2014,7,1);
+var dt1=new Date(2014,8,1,10,12,15,234);
 var ts=Timespan.fromDates(dt,dt1);
 ```
 
