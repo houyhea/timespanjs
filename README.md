@@ -4,7 +4,8 @@
 + 中文简体（zh-cn）
 + 中文繁体（zh-tw）
 + 英文（en）
-采用[MIT 许可协议](https://github.com/houyhea/timespanjs/blob/master/LICENSE)。  
+
+采用[MIT 许可协议](https://github.com/houyhea/timespanjs/blob/master/LICENSE)。
 
 ###如何使用
 1. 创建Timespan对象。可以通过构造函数中传递时间差值创建，也可以通过传递两个Date对象实例创建。
