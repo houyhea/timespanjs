@@ -5,12 +5,14 @@
 + 中文繁体（zh-tw）
 + 英文（en）
 采用[MIT 许可协议](https://github.com/houyhea/timespanjs/blob/master/LICENSE)。
+
 ###如何使用
 1. 创建Timespan对象。可以通过构造函数中传递时间差值创建，也可以通过传递两个Date对象实例创建。
 2. 调用humanize实例方法，获取人性化显示字符串。
 比如：
 ```js
-var msvalue = 30 + 1000 * 25 + 1000 * 60 * 4 + 1000 * 60 * 60 * 3;//该值表示为：3小时4分钟25秒30毫秒
+//该值表示为：3小时4分钟25秒30毫秒
+var msvalue = 30 + 1000 * 25 + 1000 * 60 * 4 + 1000 * 60 * 60 * 3;
 var ts = new Timespan(msvalue, 'ms');
 console.log(ts.humanize());//输出为：3小时4分钟25秒30毫秒
 
@@ -18,7 +20,8 @@ console.log(ts.humanize());//输出为：3小时4分钟25秒30毫秒
 var dt = new Date("2014-7-1");
 var dt1 = new Date("2014-8-1 10:12:15:234");
 var ts = Timespan.fromDates(dt, dt1);
-console.log(ts.humanize());//输出：1个月1天10小时12分钟15秒，234毫秒未输出，因为baseUnit参数默认是:'s'
+console.log(ts.humanize());
+//输出：1个月1天10小时12分钟15秒，234毫秒未输出，因为baseUnit参数默认是:'s'
 ```
 ##API说明
 见[api说明](https://github.com/houyhea/timespanjs/blob/master/doc/api.md)。
