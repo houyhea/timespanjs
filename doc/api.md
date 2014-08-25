@@ -10,7 +10,6 @@
 ###### endDate:Date类型
 结束日期，可选。默认:now。
 
-
 ```js
 var dt=new Date("2014-7-1");
 var dt1=new Date("2014-8-1 10:12:15:234");
@@ -73,4 +72,7 @@ Timespan对象实例。
 + ms。表示：毫秒
 ###### length:显示长度
 显示单位的长度。最大不能超过：8。最小：1.超过则默认为8。
+### Timespan.noConflict()
+冲突处理方法。通过该方法返回Timespan类。解决全局命名空间冲突问题。  
+
 
