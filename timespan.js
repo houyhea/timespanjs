@@ -144,7 +144,7 @@
      * @returns {Timespan}
      */
     Timespan.fromDates = function (startDate, endDate) {
-        endDate=endDate||Date.now();
+        endDate = endDate || Date.now();
         var msec = Math.abs(startDate.getTime() - endDate.getTime());
         return new Timespan(msec, 'ms');
     }
@@ -228,14 +228,32 @@
             return this.lang().humanize(this, baseUnit || this._config.baseUnit, length || this._config.length);
         },
         add: function (value, unit) {
+            if (!value)
+                return;
+            if (value instanceof Timespan) {
+                this.msec += value.asMilliseconds();
+                return;
+            }
             var ms = getMilliseconds(value, unit);
             this.msec += ms;
         },
         subtract: function (value, unit) {
+            if (!value)
+                return;
+            if (value instanceof Timespan) {
+                this.msec -= value.asMilliseconds();
+                return;
+            }
             var ms = getMilliseconds(value, unit);
             this.msec -= ms;
         },
         set: function (value, unit) {
+            if (!value)
+                return;
+            if (value instanceof Timespan) {
+                this.msec = value.asMilliseconds();
+                return;
+            }
             var ms = getMilliseconds(Math.abs(value), unit);
             this.msec = ms;
         },
@@ -258,7 +276,6 @@
         }
 
     };
-
 
 
     /******************************************************
