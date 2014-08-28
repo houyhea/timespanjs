@@ -184,9 +184,9 @@ var mv=ts.minutes();//mv=30。
 时间差值的单位，可选值见构造函数参数说明。
 
 ###subtract(value, unit)
-减时间差值。可以是number类型、Timespan类型。
+减时间差值。value可以是number类型、Timespan类型。
 ###set(value, unit)
-设置时间差值。该方法重新设置时间差对象的时间差值。可以是number类型、Timespan类型。比如：
+设置时间差值。该方法重新设置时间差对象的时间差值。value可以是number类型、Timespan类型。比如：
 ```js
 var v = 85;
 var ts = new Timespan(v, 'minutes');//'minutes'或'm'都是表示分钟。该ts对象实例表示85分钟。
