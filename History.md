@@ -1,7 +1,9 @@
 # 开发日志
 
-## v0.0.3
+## v0.1.0
 1.  扩展add、substract、set方法功能，支持传递timespan对象作为参数。
+2.  增加nodejs支持，发布到npm。地址：[timespan-js](https://www.npmjs.org/package/timespan-js)
+
 
 ## v0.0.2
 1. 完善主体代码逻辑

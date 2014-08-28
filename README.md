@@ -31,7 +31,17 @@ define(["timespanjs"], function (Timespan) {
 });
 ```
 ####node.js下的引用
+安装nodejs，通过npm命令安装timespanjs（注意：由于timespanjs被抢注，这里采用timespan-js作为nodejs中的包名）。
 
+```js
+npm install timespan-js
+```
+调用方法：
+```js
+var TS=require("timespan-js");
+var ts=new TS(85,"m");
+console.log(ts.humanize());
+```
 
 ####调用示例：
 ```js

@@ -5,7 +5,7 @@
  */
 (function () {
     'use strict';
-    var VERSION = "0.0.2",
+    var VERSION = "0.1.0",
         globalScope = typeof global !== 'undefined' ? global : this,
         oldGlobalMoment,
         languages = {},

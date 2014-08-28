@@ -1,0 +1,12 @@
+{
+    "name": "timespan-js",
+    "description":"A javascript libaray witch can support humanized dispay of the timespan.",
+    "keywords":["time","timespan","date","humanize","i18n"],
+    "maintainers":[{"name":"houyhea","emal":"houyhea@126.com","web":"http://www.flightjs.com"}],
+    "repositories":"https://github.com/houyhea/timespanjs",
+    "homepage":"http://www.timespanjs.com",
+    "author":"houyhea",
+    "version": "0.0.3",
+    "dependencies": {},
+    "main": "timespan.js"
+}
