@@ -131,7 +131,9 @@
      * @constructor
      */
     var Timespan = function (value, unit, config) {
-
+        if (!(value instanceof Number)) {
+            throw new Error("value must be a number");
+        }
         unit = unit || "ms";
         this.msec = getMilliseconds(value, unit);
         this._config = extend(CONFIG, config);
