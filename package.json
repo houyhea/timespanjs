@@ -6,7 +6,7 @@
     "repositories":"https://github.com/houyhea/timespanjs",
     "homepage":"http://www.timespanjs.com",
     "author":"houyhea",
-    "version": "0.0.3",
+    "version": "0.1.1",
     "dependencies": {},
     "main": "timespan.js"
 }
