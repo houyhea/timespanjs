@@ -5,7 +5,7 @@
  */
 (function () {
     'use strict';
-    var VERSION = "0.1.0",
+    var VERSION = "0.1.1",
         globalScope = typeof global !== 'undefined' ? global : this,
         oldGlobalMoment,
         languages = {},
@@ -248,6 +248,10 @@
             }
             var ms = getMilliseconds(value, unit);
             this.msec -= ms;
+        },
+        get:function()
+        {
+            return this.msec;
         },
         set: function (value, unit) {
             if (!value)

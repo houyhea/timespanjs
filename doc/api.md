@@ -185,6 +185,8 @@ var mv=ts.minutes();//mv=30。
 
 ###subtract(value, unit)
 减时间差值。value可以是number类型、Timespan类型。
+###get()
+获取timespan对象的毫秒数值。
 ###set(value, unit)
 设置时间差值。该方法重新设置时间差对象的时间差值。value可以是number类型、Timespan类型。比如：
 ```js
