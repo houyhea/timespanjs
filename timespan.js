@@ -249,8 +249,7 @@
             var ms = getMilliseconds(value, unit);
             this.msec -= ms;
         },
-        get:function()
-        {
+        get: function () {
             return this.msec;
         },
         set: function (value, unit) {
@@ -264,7 +263,12 @@
             this.msec = ms;
         },
         config: function (config) {
-            extend(this._config, config);
+            if (config === undefined) {
+                return this._config;
+            }
+            else {
+                extend(this._config, config);
+            }
         },
         lang: function (key) {
             if (key === undefined) {

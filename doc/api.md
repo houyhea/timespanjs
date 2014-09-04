@@ -200,7 +200,7 @@ msv=ts.minutes();//msv=34。
 asmsv=ts.asMinutes();//asmsv=34。
 ```
 ###config(config)
-设置时间差对象的配置参数。
+设置或获取时间差对象的配置参数。如果不传入config参数，则返回时间差的配置参数。
 ######config
 配置参数对象。比如：
 ```js
