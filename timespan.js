@@ -112,7 +112,7 @@
             if (v <= 0)
                 continue;
 
-            var t = (v > 1 ? this.PLURAL[units[j]] : this.SINGLUAR[units[j]]).replace(/%d/i, v);
+            var t = (v > 1 ? this.PLURAL[units[j]] : this.SINGLUAR[units[j]]).replace(/%d/gi, v);
             texts.push(t);
             len++;
         }
