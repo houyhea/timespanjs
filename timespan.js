@@ -131,11 +131,12 @@
      * @constructor
      */
     var Timespan = function (value, unit, config) {
-        if (!(value instanceof Number)) {
+        var v=parseInt(value);
+        if (isNaN(v)) {
             throw new Error("value must be a number");
         }
         unit = unit || "ms";
-        this.msec = getMilliseconds(value, unit);
+        this.msec = getMilliseconds(v, unit);
         this._config = extend(CONFIG, config);
     }
 
